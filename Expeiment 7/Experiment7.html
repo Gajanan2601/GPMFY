@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Government Polytechnic Mumbai</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      min-height: 100vh;
+      background-color: #f8fafc;
+      color: #334155;
+    }
+
+    /* LEFT SIDEBAR (Width: 20%) - Fixed Position for Easy Navigation */
+    .sidebar {
+      width: 20%;
+      background-color: #ffffff;
+      border-right: 1px solid #e2e8f0;
+      padding: 32px 16px;
+      position: fixed;
+      height: 100vh;
+      left: 0;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .sidebar-header h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 24px;
+      letter-spacing: -0.3px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+    }
+
+    .sidebar li {
+      margin-bottom: 8px;
+    }
+
+    .sidebar a {
+      color: #64748b;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: block;
+      padding: 10px 14px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .sidebar a:hover {
+      background-color: #e0f2fe;
+      color: #0284c7;
+    }
+
+    /* RIGHT CONTENT PANEL (Width: 80%) */
+    .content-panel {
+      width: 80%;
+      margin-left: 20%;
+      padding: 40px 48px 80px 48px;
+      max-width: 960px;
+    }
+
+    .content-section {
+      background-color: #ffffff;
+      padding: 32px;
+      margin-bottom: 32px;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      scroll-margin-top: 40px; /* Prevents target content from sticking right at top edge */
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* HIGHLIGHT EFFECT: Highlights section when navigated to via sidebar */
+    .content-section:target {
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
+    }
+
+    .content-section h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 12px;
+    }
+
+    .content-section p {
+      line-height: 1.6;
+      color: #475569;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+
+    .content-section ul {
+      margin-left: 20px;
+      line-height: 1.8;
+      color: #475569;
+      font-size: 0.95rem;
+    }
+
+    /* Quick Contact Form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    .contact-form input, 
+    .contact-form select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      color: #0f172a;
+      background-color: #fff;
+    }
+
+    .submit-btn {
+      align-self: flex-start;
+      background-color: #0284c7;
+      color: #ffffff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background-color 0.2s;
+    }
+
+    .submit-btn:hover {
+      background-color: #0369a1;
+    }
+
+    /* FLOATING BACK-TO-TOP BUTTON */
+    .back-to-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: #0284c7;
+      color: white;
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: background-color 0.2s, transform 0.2s;
+    }
+
+    .back-to-top:hover {
+      background-color: #0369a1;
+      transform: translateY(-2px);
+    }
+
+    /* Responsive adjustment */
+    @media (max-width: 768px) {
+      body { flex-direction: column; }
+      .sidebar { position: relative; width: 100%; height: auto; }
+      .content-panel { width: 100%; margin-left: 0; padding: 24px 16px; }
+    }
+  </style>
+</head>
+<body id="top">
+
+  <!-- LEFT SIDEBAR (20% Width) -->
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <h2>🏛️ GP Mumbai</h2>
+      <ul>
+        <li><a href="#about">📌 Overview</a></li>
+        <li><a href="#departments">📚 Departments</a></li>
+        <li><a href="#placements">💼 Placements</a></li>
+        <li><a href="#contact">📩 Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- RIGHT CONTENT AREA (80% Width) -->
+  <main class="content-panel">
+
+    <!-- Overview Section -->
+    <section class="content-section" id="about">
+      <h1>Government Polytechnic Mumbai</h1>
+      <p>Established in 1957, Government Polytechnic Mumbai is a premier autonomous institute managed by the Government of Maharashtra and approved by AICTE.</p>
+      <p>Situated on a 28-acre campus in Bandra (East), the college offers NBA-accredited diploma engineering courses with modern laboratory and research facilities.</p>
+    </section>
+
+    <!-- Departments Section -->
+    <section class="content-section" id="departments">
+      <h1>Engineering Departments</h1>
+      <p>The institute provides 3-year full-time diploma courses in the following branches:</p>
+      <ul>
+        <li>Computer Engineering</li>
+        <li>Information Technology</li>
+        <li>Civil Engineering</li>
+        <li>Mechanical Engineering</li>
+        <li>Electrical Engineering</li>
+        <li>Electronics Engineering</li>
+      </ul>
+    </section>
+
+    <!-- Placements Section -->
+    <section class="content-section" id="placements">
+      <h1>Training & Placement Cell</h1>
+      <p>GP Mumbai maintains strong ties with industry leaders to facilitate student internships and campus recruitments.</p>
+      <ul>
+        <li><strong>Placement Rate:</strong> Over 85% eligible students placed annually</li>
+        <li><strong>Highest Salary Package:</strong> Up to 12 LPA</li>
+        <li><strong>Top Recruiters:</strong> Tata Power, L&T, Siemens, Reliance Industries, TCS</li>
+      </ul>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="content-section" id="contact">
+      <h1>Admission Enquiries</h1>
+      <p>Fill out the form below to receive updates regarding DTE Maharashtra admission schedules.</p>
+      
+      <form class="contact-form" action="#" method="post">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="name@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="branch">Preferred Branch</label>
+          <select id="branch" name="branch" required>
+            <option value="" disabled selected>Select a branch</option>
+            <option value="cs">Computer Engineering</option>
+            <option value="it">Information Technology</option>
+            <option value="civil">Civil Engineering</option>
+            <option value="mech">Mechanical Engineering</option>
+          </select>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Enquiry</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- Floating Back to Top Navigation Link -->
+  <a href="#top" class="back-to-top">↑ Top</a>
+
+</body>
+</html>

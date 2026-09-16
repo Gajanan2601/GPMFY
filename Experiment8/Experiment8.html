@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Government Polytechnic Mumbai | Official Portal</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      background-color: #0d1117;
+      color: #ffffff;
+    }
+
+    /* Top Navigation Bar */
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(13, 17, 23, 0.9);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 10;
+    }
+
+    .nav-logo {
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      color: #38bdf8;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    /* 2x2 Layout Grid */
+    .gpm-layout {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+      height: 100vh;
+      width: 100vw;
+      gap: 12px;
+      padding: 72px 12px 12px 12px;
+    }
+
+    .panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 28px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      overflow-y: auto;
+    }
+
+    .panel:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Scrollbar for Panel Content */
+    .panel::-webkit-scrollbar {
+      width: 4px;
+    }
+    .panel::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+    }
+
+    /* Frame Theme Gradients */
+    .frame-about { background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%); }
+    .frame-academics { background: linear-gradient(135deg, #0284c7 0%, #0c4a6e 100%); }
+    .frame-placements { background: linear-gradient(135deg, #d97706 0%, #451a03 100%); }
+    .frame-admissions { background: linear-gradient(135deg, #059669 0%, #064e3b 100%); }
+
+    .inst-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      align-self: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .inst-badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #38bdf8;
+    }
+
+    .content h2 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .content p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    /* Content Lists */
+    .info-list {
+      list-style: none;
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+    }
+
+    .info-list li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 6px;
+      opacity: 0.9;
+    }
+
+    .info-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #38bdf8;
+      font-weight: bold;
+    }
+
+    /* Department Chips */
+    .dept-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 10px 0;
+    }
+
+    .chip {
+      background: rgba(255, 255, 255, 0.15);
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+
+    /* Placement Metrics */
+    .campus-stats {
+      display: flex;
+      gap: 20px;
+      margin-top: 12px;
+    }
+
+    .stat-number {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .recruiter-tags {
+      font-size: 0.8rem;
+      opacity: 0.85;
+      font-style: italic;
+      margin-top: 12px;
+    }
+
+    /* Form Elements */
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .action-input, .action-select {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 8px 12px;
+      border-radius: 8px;
+      color: #ffffff;
+      outline: none;
+      font-size: 0.85rem;
+    }
+
+    .action-select option {
+      background: #0f172a;
+      color: #fff;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #38bdf8;
+      color: #0c4a6e;
+      padding: 8px 16px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      margin-top: 8px;
+      transition: background 0.2s, transform 0.2s;
+      width: fit-content;
+    }
+
+    .btn:hover {
+      background: #7dd3fc;
+      transform: translateY(-2px);
+    }
+
+    /* Mobile Responsive Stacking */
+    @media (max-width: 768px) {
+      body { overflow-y: auto; }
+      .gpm-layout {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        padding-top: 72px;
+      }
+      .panel { min-height: 360px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="top-nav">
+    <div class="nav-logo">🏛️ GP Mumbai Portal</div>
+    <ul class="nav-links">
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#academics">Departments</a></li>
+      <li><a href="#placements">Placements</a></li>
+      <li><a href="#admissions">Admissions</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main 2x2 Grid Layout -->
+  <main class="gpm-layout">
+    
+    <!-- CONTAINER 1: Institutional Overview -->
+    <section class="panel frame-about" id="about">
+      <div>
+        <span class="inst-badge">Autonomous Institute</span>
+        <div class="content">
+          <h2>Government Polytechnic Mumbai</h2>
+          <p>Established in 1957, G.P. Mumbai is an autonomous institute of the Government of Maharashtra, accredited by NBA and recognized by AICTE.</p>
+          
+          <ul class="info-list">
+            <li>Located on a prime 28-acre Bandra (E) campus</li>
+            <li>Diploma programs under Autonomous Status</li>
+            <li>Equipped with high-tech research & testing labs</li>
+            <li>Operates under DTE Maharashtra guidance</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTAINER 2: Academic Programs -->
+    <section class="panel frame-academics" id="academics">
+      <div>
+        <span class="inst-badge">Diploma Courses</span>
+        <div class="content">
+          <h2>Engineering Disciplines</h2>
+          <p>Offering 3-year full-time NBA-accredited diploma courses designed with outcome-based education (OBE) principles.</p>
+          
+          <div class="dept-chips">
+            <span class="chip">Computer Engg</span>
+            <span class="chip">Information Tech</span>
+            <span class="chip">Civil Engg</span>
+            <span class="chip">Mechanical</span>
+            <span class="chip">Electrical</span>
+            <span class="chip">Electronics</span>
+            <span class="chip">Rubber Tech</span>
+            <span class="chip">Leather Tech</span>
+          </div>
+          <p style="font-size: 0.8rem; opacity: 0.8; margin-top: 8px;">Curriculum updated regularly with mandatory industry internships and capstone projects.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTAINER 3: Placements & Industry Linkages -->
+    <section class="panel frame-placements" id="placements">
+      <div>
+        <span class="inst-badge">Training & Placement</span>
+        <div class="content">
+          <h2>Career & Recruitment</h2>
+          <p>Our Training & Placement Cell connects students with top engineering and tech industries across India.</p>
+          
+          <div class="campus-stats">
+            <div>
+              <div class="stat-number">88%</div>
+              <div class="stat-label">Placed</div>
+            </div>
+            <div>
+              <div class="stat-number">110+</div>
+              <div class="stat-label">Recruiters</div>
+            </div>
+            <div>
+              <div class="stat-number">12 LPA</div>
+              <div class="stat-label">Highest</div>
+            </div>
+          </div>
+          <div class="recruiter-tags">Key Hiring Partners: L&T, Tata Power, TCS, Siemens, Reliance, JSW, Godrej</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTAINER 4: Admissions Form -->
+    <section class="panel frame-admissions" id="admissions">
+      <div>
+        <span class="inst-badge">DTE Admissions</span>
+        <div class="content">
+          <h2>Admissions & Support</h2>
+          <p>Admissions are conducted centrally by DTE Maharashtra through CAP rounds based on 10th (SSC) merit scores.</p>
+          
+          <form class="form-group" action="#" method="post">
+            <input type="text" class="action-input" placeholder="Candidate Full Name" required>
+            <input type="email" class="action-input" placeholder="Email Address" required>
+            <select class="action-select" required>
+              <option value="" disabled selected>Select Preferred Branch</option>
+              <option value="cs">Computer Engineering</option>
+              <option value="it">Information Technology</option>
+              <option value="civil">Civil Engineering</option>
+              <option value="mech">Mechanical Engineering</option>
+              <option value="elec">Electrical Engineering</option>
+              <option value="extc">Electronics Engineering</option>
+            </select>
+            <button type="submit" class="btn">Submit Enquiry</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
